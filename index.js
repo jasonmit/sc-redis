@@ -22,8 +22,8 @@ module.exports.attach = function (broker) {
   });
 
   var instanceId = broker.instanceId;
-  var subClient = redis.createClient(brokerOptions.port, brokerOptions.host, brokerOptions);
-  var pubClient = redis.createClient(brokerOptions.port, brokerOptions.host, brokerOptions);
+  var subClient = redis.createClient(brokerOptions.uri, brokerOptions);
+  var pubClient = redis.createClient(brokerOptions.uri, brokerOptions);
 
   broker.on('subscribe', subClient.subscribe.bind(subClient));
   broker.on('unsubscribe', subClient.unsubscribe.bind(subClient));
